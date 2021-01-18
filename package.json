@@ -1,0 +1,10 @@
+{
+  "name": "Macro_Exclusive",
+  "version": "1.0.0",
+  "description": "Projekt zaliczeniowy na IO MacroExcl",
+  "main": "index.js",
+  "repository": "https://github.com/TwixerR/Macro_Exclusive.git",
+  "author": "Grzegorz Surdziel <surdziel.grzegorz@gmail.com>",
+  "license": "MIT",
+  "private": null
+}
