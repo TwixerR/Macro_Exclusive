@@ -1,0 +1,8 @@
+<h1>Fallback</h1>
+<% if logged_in? %>
+<h1>You are Logged In, <%= current_user.username %></h1>
+<%end%>
+<%= button_to "Login", '/login', method: :get, class: "nav"%>
+<%= button_to "Sign Up", '/users/new', method: :get, class: "nav"%>
+
+<%= link_to "Strona startowa", pages_path, class: "nav" %>
