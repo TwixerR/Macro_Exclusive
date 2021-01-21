@@ -1,4 +1,8 @@
 ﻿Rails.application.routes.draw do
+  resources :clothes
+  resources :kosiarkas
+  resources :tools
+  resources :parts
   resources :contacts
 	#User authentication, login and similar items section
 	get 'sessions/new'
