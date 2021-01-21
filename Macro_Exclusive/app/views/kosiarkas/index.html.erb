@@ -1,92 +1,58 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
-	<head>
-		<title>Tools Shop</title>
-		<meta charset="UTF-8"/>
-		<link rel="stylesheet" type="text/css" href="style.css" />
-		<!--[if IE 6]>
-<link rel="stylesheet" type="text/css" href="iecss.css" />
-<![endif]-->
-		<script type="text/javascript" src="js/boxOver.js"></script>
-	</head>
-	<body>
-		<div id="main_container">
-			<div id="header">
-				<div class="top_right">
-					<div class="big_banner">
-						<a href="#">
-							<img src="images/banner728.jpg" alt="" border="0" />
-						</a>
-					</div>
-				</div>
-				<div id="logo">
-					<a href="#">
-						<img src="images/logo.png" alt="" border="0" width="182" height="85" />
-					</a>
-				</div>
-			</div>
-			<div id="main_content">
-				<div id="menu_tab">
-					<ul class="menu">
-						<li>
-							<a href="index.html" class="nav"> Strona startowa </a>
-						</li>
-						<li class="divider"></li>
-						<li>
-							<a href="products.html" class="nav">Produkty</a>
-						</li>
-						<li class="divider"></li>
-						<li>
-							<a href="account.html" class="nav">Moje konto</a>
-						</li>
-						<li class="divider"></li>
-						<li>
-							<a href="log.html" class="nav">Zaloguj się>
-						</li>
-						<li class="divider"></li>
-						<li>
-							<a href="contact.html" class="nav">Kontakt</a>
-						</li>
-					</ul>
-				</div>
-				<!-- end of menu tab -->
-				<div class="left_content">
-					<div class="title_box">Kategorie</div>
-					<ul class="left_menu">
-						<li class="odd">
-							<a href="parts.html">Części zapasowe</a>
-						</li>
-						<li class="even">
-							<a href="tools.html">Narzꤺia</a>
-						</li>
-						<li class="odd">
-							<a href="kosiarki.html">Kosiarki</a>
-						</li>
-						<li class="even">
-							<a href="clothes.html">Odzie¿ robocza</a>
-						</li>
-					</ul>
-					<div class="title_box">Oferta specjalna</div>
-					<div class="border_box">
-						<div class="product_title">
-							<a href="#">Makita 156 MX-VL</a>
-						</div>
-						<div class="product_img">
-							<a href="#">
-								<img src="images/p1.jpg" alt="" border="0" />
-							</a>
-						</div>
-						<div class="prod_price">
-							<span class="reduce">350z³</span>
-							<span class="price">270z³</span>
-						</div>
-					</div>
-					<div class="title_box">Newsletter</div>
-					<div class="border_box">
-						<input type="text" name="newsletter" class="newsletter_input" value="tw󪠡dres email"/>
-					</div>
-				</div>
-				<!-- end of left content -->
+<head>
+<title>Tools Shop</title>
+<meta charset="UTF-8"/>
+<link rel="stylesheet" type="text/css" href="/app/assets/stylesheets/style.css" />
+<script type="text/javascript" src="/app/assets/javascripts/boxOver.js"></script>
+</head>
+<body>
+<div id="main_container">
+    
+  <div id="header">
+    <div class="top_right">
+      <div class="big_banner"> <a href="#"><%= image_tag "banner728.jpg" %></a> </div>
+    </div>
+    <div id="logo"> <a href="#"><%= image_tag "logo.webp", size: "100x100" %></a> </div>
+  </div>
+  <div id="main_content">
+    <div id="menu_tab">
+        <ul class="menu">
+            <li><%= link_to "Strona startowa", @index, class: "nav" %> </li>
+            <li class="divider"></li>
+            <li><%= link_to "Produkty", products_path, class: "nav" %> </li>
+            <li class="divider"></li>
+            <li><%= link_to "Moje konto", @index, class: "nav" %> </li>
+            <li class="divider"></li>
+            <% if !logged_in? %>
+            <li><%= link_to "Zaloguj się", "sessions/login", class: "nav" %> </li>
+            <%else%>
+            <li><%= link_to "Wyloguj mnie", "sessions/logout", method: :delete, class: "nav" %> </li>
+            <%end%>
+            <li class="divider"></li>
+            <li><%= link_to "Kontakt", contacts_path, class: "nav" %> </li>
+        </ul>
+    </div>
+    <!-- end of menu tab -->
+    <div class="left_content">
+      <div class="title_box">Kategorie</div>
+      <ul class="left_menu">
+          <li class="odd"><%= link_to "Części zapasowe", parts_path, class: "odd" %></li>
+          <li class="odd"><%= link_to "Narzędzia", tools_path, class: "even" %></li>
+          <li class="odd"><%= link_to "Kosiarki", kosiarkas_path, class: "odd" %></li>
+          <li class="odd"><%= link_to "Odzież robocza", clothes_path, class: "even" %></li>
+      </ul>
+      <div class="title_box">Oferta specjalna</div>
+      <div class="border_box">
+        <div class="product_title"><a href="#">Makita 156 MX-VL</a></div>
+        <div class="product_img"><a href="#"><%= image_tag "p1.jpg" %></a></div>
+        <div class="prod_price"><span class="reduce">350zł</span> <span class="price">270zł</span></div>
+      </div>
+      <div class="title_box">Newsletter</div>
+      <div class="border_box">
+        <input type="text" name="newsletter" class="newsletter_input" value="twój adres email"/>
+      </div>
+    </div>				<!-- end of left content -->
 				<div class="center_content">
 					<div class="center_title_bar">Najnowsze produkty</div>
 					<div class="prod_box">
@@ -96,11 +62,11 @@
 							</div>
 							<div class="product_img">
 								<a href="#">
-									<img src="images/H310-1196.png" alt="" border="0" width="180" height="140" />
+									<%= image_tag "H310-1196.png", size: "180x140"%>
 								</a>
 							</div>
 							<div class="prod_price">
-								<span class="price">2130z³</span>
+								<span class="price">2130zł</span>
 							</div>
 						</div>
 						<div class="prod_details_tab">
@@ -115,11 +81,11 @@
 							</div>
 							<div class="product_img">
 								<a href="#">
-									<img src="images/H310-1914.png" alt="" border="0" width="180" height="140"/>
+									<%= image_tag "H310-1914.png", size: "180x140"%>
 								</a>
 							</div>
 							<div class="prod_price">
-								<span class="price">2037z³</span>
+								<span class="price">2037zł</span>
 							</div>
 						</div>
 						<div class="prod_details_tab">
