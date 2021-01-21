@@ -1,25 +1,321 @@
-<p id="notice"><%= notice %></p>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+		<title>Tools Shop</title>
+		<meta charset="UTF-8"/>
+		<link rel="stylesheet" type="text/css" href="/app/assets/stylesheets/style.css" />
+		<script type="text/javascript" src="/app/assets/javascripts/boxOver.js"></script>
+	</head>
+	<body>
+		<div id="main_container">
 
-<h1>Parts</h1>
-
-<table>
-  <thead>
-    <tr>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @parts.each do |part| %>
-      <tr>
-        <td><%= link_to 'Show', part %></td>
-        <td><%= link_to 'Edit', edit_part_path(part) %></td>
-        <td><%= link_to 'Destroy', part, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<br>
-
-<%= link_to 'New Part', new_part_path %>
+			<div id="header">
+				<div class="top_right">
+					<div class="big_banner">
+						<a href="#">
+							<%= image_tag "banner728.jpg" %>
+						</a>
+					</div>
+				</div>
+				<div id="logo">
+					<a href="#">
+						<%= image_tag "logo.webp", size: "100x100" %>
+					</a>
+				</div>
+			</div>
+			<div id="main_content">
+				<div id="menu_tab">
+					<ul class="menu">
+						<li>
+							<%= link_to "Strona startowa", @index, class: "nav" %>
+						</li>
+						<li class="divider"></li>
+						<li>
+							<%= link_to "Produkty", products_path, class: "nav" %>
+						</li>
+						<li class="divider"></li>
+						<li>
+							<%= link_to "Moje konto", @index, class: "nav" %>
+						</li>
+						<li class="divider"></li>
+						<% if !logged_in? %>
+						<li>
+							<%= link_to "Zaloguj się", "sessions/login", class: "nav" %>
+						</li>
+						<%else%>
+							<li>
+								<%= link_to "Wyloguj mnie", "sessions/logout", method: :delete, class: "nav" %>
+							</li>
+							<%end%>
+								<li class="divider"></li>
+								<li>
+									<%= link_to "Kontakt", contacts_path, class: "nav" %>
+								</li>
+							</ul>
+				</div>
+				<!-- end of menu tab -->
+				<div class="left_content">
+					<div class="title_box">Kategorie</div>
+					<ul class="left_menu">
+						<li class="odd">
+							<%= link_to "Części zapasowe", parts_path, class: "odd" %>
+						</li>
+						<li class="odd">
+							<%= link_to "Narzędzia", tools_path, class: "even" %>
+						</li>
+						<li class="odd">
+							<%= link_to "Kosiarki", kosiarkas_path, class: "odd" %>
+						</li>
+						<li class="odd">
+							<%= link_to "Odzież robocza", clothes_path, class: "even" %>
+						</li>
+					</ul>
+					<div class="title_box">Oferta specjalna</div>
+					<div class="border_box">
+						<div class="product_title">
+							<a href="#">Makita 156 MX-VL</a>
+						</div>
+						<div class="product_img">
+							<a href="#">
+								<%= image_tag "p1.jpg" %>
+							</a>
+						</div>
+						<div class="prod_price">
+							<span class="reduce">350zł</span>
+							<span class="price">270zł</span>
+						</div>
+					</div>
+					<div class="title_box">Newsletter</div>
+					<div class="border_box">
+						<input type="text" name="newsletter" class="newsletter_input" value="twój adres email"/>
+					</div>
+				</div>
+				<!-- end of left content -->
+				<div class="center_content">
+					<div class="center_title_bar">Najnowsze produkty</div>
+					<div class="prod_box">
+						<div class="center_prod_box">
+							<div class="product_title">
+								<a href="#">Makita 156 MX-VL</a>
+							</div>
+							<div class="product_img">
+								<%= image_tag "p1.jpg" %></a>
+							</div>
+							<div class="prod_price">
+								<span class="reduce">350zł</span>
+								<span class="price">270zł</span>
+							</div>
+						</div>
+						<div class="prod_details_tab">
+							<a href="#" class="prod_buy">Dodaj</a>
+							<a href="#" class="prod_details">Opis</a>
+						</div>
+					</div>
+					<div class="prod_box">
+						<div class="center_prod_box">
+							<div class="product_title">
+								<a href="#">Lotus PP4</a>
+							</div>
+							<div class="product_img">
+								<a href="#">
+									<%= image_tag "p6.jpg" %>
+								</a>
+							</div>
+							<div class="prod_price">
+								<span class="reduce">350zł</span>
+								<span class="price">270zł</span>
+							</div>
+						</div>
+						<div class="prod_details_tab">
+							<a href="#" class="prod_buy">Dodaj</a>
+							<a href="#" class="prod_details">Opis</a>
+						</div>
+					</div>
+					<div class="prod_box">
+						<div class="center_prod_box">
+							<div class="product_title">
+								<a href="#">Bosch XC</a>
+							</div>
+							<div class="product_img">
+								<a href="#">
+									<%= image_tag "p5.jpg" %>
+								</a>
+							</div>
+							<div class="prod_price">
+								<span class="reduce">350zł</span>
+								<span class="price">270zł</span>
+							</div>
+						</div>
+						<div class="prod_details_tab">
+							<a href="#" class="prod_buy">Dodaj</a>
+							<a href="#" class="prod_details">Opis</a>
+						</div>
+					</div>
+					<div class="prod_box">
+						<div class="center_prod_box">
+							<div class="product_title">
+								<a href="#">Śrubki M4 długość: 12mm z podkładkami - 10szt</a>
+							</div>
+							<div class="product_img">
+								<a href="#">
+									<%= image_tag "t3.webp", size: "100x100" %>
+								</a>
+							</div>
+							<div class="prod_price">
+								<span class="reduce">3zł</span>
+								<span class="price">2,50zł</span>
+							</div>
+						</div>
+						<div class="prod_details_tab">
+							<a href="#" class="prod_buy">Dodaj</a>
+							<a href="#" class="prod_details">Opis</a>
+						</div>
+					</div>
+					<div class="prod_box">
+						<div class="center_prod_box">
+							<div class="product_title">
+								<a href="#">Kosiarka H310-1196</a>
+							</div>
+							<div class="product_img">
+								<a href="#">
+									<%= image_tag "H310-1196.png", size: "180x140" %>
+								</a>
+							</div>
+							<div class="prod_price">
+								<span class="price">2130zł</span>
+							</div>
+						</div>
+						<div class="prod_details_tab">
+							<a href="#" class="prod_buy">Dodaj</a>
+							<a href="#" class="prod_details">Opis</a>
+						</div>
+					</div>
+					<div class="prod_box">
+						<div class="center_prod_box">
+							<div class="product_title">
+								<a href="#">KURTKA OSTRZEGAWCZA HI VIS URAN ŻÓŁTA ODBLASKOWA</a>
+							</div>
+							<div class="product_img">
+								<a href="#">
+									<%= image_tag "s3.jpg", size: "180x130" %>
+								</a>
+							</div>
+							<div class="prod_price">
+								<span class="price">200zł</span>
+							</div>
+						</div>
+						<div class="prod_details_tab">
+							<a href="#" class="prod_buy">Dodaj</a>
+							<a href="#" class="prod_details">Opis</a>
+						</div>
+					</div>
+					<div class="center_title_bar">Polecamy</div>
+					<div class="prod_box">
+						<div class="center_prod_box">
+							<div class="product_title">
+								<a href="#">Makita 156 MX-VL</a>
+							</div>
+							<div class="product_img">
+								<a href="#">
+									<%= image_tag "p7.jpg", size: "100x100" %>
+								</a>
+							</div>
+							<div class="prod_price">
+								<span class="reduce">350zł</span>
+								<span class="price">270zł</span>
+							</div>
+						</div>
+						<div class="prod_details_tab">
+							<a href="#" class="prod_buy">Dodaj</a>
+							<a href="#" class="prod_details">Opis</a>
+						</div>
+					</div>
+					<div class="prod_box">
+						<div class="center_prod_box">
+							<div class="product_title">
+								<a href="#">Bosch XC</a>
+							</div>
+							<div class="product_img">
+								<a href="#">
+									<%= image_tag "t2.webp", size: "100x100" %>
+								</a>
+							</div>
+							<div class="prod_price">
+								<span class="reduce">350zł</span>
+								<span class="price">270zł</span>
+							</div>
+						</div>
+						<div class="prod_details_tab">
+							<a href="#" class="prod_buy">Dodaj</a>
+							<a href="#" class="prod_details">Opis</a>
+						</div>
+					</div>
+					<div class="prod_box">
+						<div class="center_prod_box">
+							<div class="product_title">
+								<a href="#">Lotus PP4</a>
+							</div>
+							<div class="product_img">
+								<a href="#">
+									<%= image_tag "p3.jpg", size: "140x100" %>
+								</a>
+							</div>
+							<div class="prod_price">
+								<span class="reduce">350zł</span>
+								<span class="price">270zł</span>
+							</div>
+						</div>
+						<div class="prod_details_tab">
+							<a href="#" class="prod_buy">Dodaj</a>
+							<a href="#" class="prod_details">Opis</a>
+						</div>
+					</div>
+				</div>
+				<!-- end of center content -->
+				<div class="right_content">
+					<div class="title_box">Szukaj</div>
+					<div class="border_box">
+						<input type="text" name="newsletter" class="newsletter_input" value="szukaj..."/>
+					</div>
+					<div class="shopping_cart">
+						<div class="title_box">Koszyk</div>
+						<div class="cart_details">
+							0 produktów <br />
+							<span class="border_cart"></span> Razem: <span class="price">350zł</span>
+						</div>
+						<div class="cart_icon">
+							<a href="#">
+								<%= image_tag "shoppingcart.png", size: "35x35" %>
+							</a>
+						</div>
+					</div>
+					<div class="title_box">Co nowego</div>
+					<div class="border_box">
+						<div class="product_title">
+							<a href="#">Motorola 156 MX-VL</a>
+						</div>
+						<div class="product_img">
+							<a href="#">
+								<%= image_tag "p2.jpg" %><</a>
+						</div>
+						<div class="prod_price">
+							<span class="reduce">350zł</span>
+							<span class="price">270zł</span>
+						</div>
+					</div>
+				</div>
+				<!-- end of right content -->
+			</div>
+			<!-- end of main content -->
+			<div class="footer">
+				<div class="left_footer">
+					<%= image_tag "logo.webp", size: "100x100" %>
+				</div>
+				<div class="center_footer">
+					<%= image_tag "payment.gif" %>
+				</div>
+			</div>
+		</div>
+		<!-- end of main_container -->
+	</body>
+</html>
