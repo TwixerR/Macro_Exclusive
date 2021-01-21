@@ -1,17 +1,21 @@
 ﻿Rails.application.routes.draw do
-  #User authentication, login and similar items section
-  get 'sessions/new'
-  get 'sessions/create'
-  get 'sessions/login'
-  get 'sessions/welcome'
-  get 'users/new'
-  get 'users/create'
-    resources :users, only: [:new, :create]
+	#User authentication, login and similar items section
+	get 'sessions/new'
+	get 'sessions/create'
+	get 'sessions/login'
+	get 'sessions/logout'
+	get 'sessions/welcome'
+	get 'users/new'
+	get 'users/create'
+  
+    resources :users, only: [:new, :create, :destroy]
 	get 'login', to: 'sessions#new'
 	post 'login', to: 'sessions#create'
 	get 'welcome', to: 'sessions#welcome'
 	get 'authorized', to: 'pages#index'
-
+	
+	#logout section
+	delete 'sessions/logout', to: "sessions#destroy"
 
 	#general routes section
 	resources :accounts

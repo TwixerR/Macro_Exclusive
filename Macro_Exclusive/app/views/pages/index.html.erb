@@ -4,10 +4,11 @@
 <title>Tools Shop</title>
 <meta charset="UTF-8"/>
 <link rel="stylesheet" type="text/css" href="/app/assets/stylesheets/style.css" />
-<script type="text/javascript" src="js/boxOver.js"></script>
+<script type="text/javascript" src="/app/assets/javascripts/boxOver.js"></script>
 </head>
 <body>
 <div id="main_container">
+    
   <div id="header">
     <div class="top_right">
       <div class="big_banner"> <a href="#"><%= image_tag "banner728.jpg" %></a> </div>
@@ -23,7 +24,11 @@
             <li class="divider"></li>
             <li><%= link_to "Moje konto", @index, class: "nav" %> </li>
             <li class="divider"></li>
+            <% if !logged_in? %>
             <li><%= link_to "Zaloguj się", "sessions/login", class: "nav" %> </li>
+            <%else%>
+            <li><%= link_to "Wyloguj mnie", "sessions/logout", method: :delete, class: "nav" %> </li>
+            <%end%>
             <li class="divider"></li>
             <li><%= link_to "Kontakt", @contact, class: "nav" %> </li>
         </ul>

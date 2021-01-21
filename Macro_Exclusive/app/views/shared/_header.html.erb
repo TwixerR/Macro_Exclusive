@@ -1,0 +1,7 @@
+﻿
+
+<% if logged_in? %>
+	<div class="topnav"><h1 class="content">Jestes zalogowany, <%= current_user.username %></h1></div>
+<%else%>
+	<div class="topnav"><h1 class="content">Witaj, gościu</h1></div>
+<%end%>
